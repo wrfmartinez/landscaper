@@ -44,7 +44,7 @@ def start_game():
       shop_item3 = itemDetails("Fancy Battery-powered Lawnmower")
       shop_item4 = itemDetails("Team of Starving Students")
 
-      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy?\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\n> ")
+      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy? Press the items number then Enter\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\nPress ANY OTHER KEY to EXIT SHOP\n> ")
 
       if tool.lower() != "rusty scissors" and buy_tool == "1" and money >= shop_item1['item_price']:
         money -= shop_item1['item_price']
@@ -63,7 +63,8 @@ def start_game():
     else:
       start_game()
     
-    if money == 1000 and tool.lower() == "team of starving students":
+    if money >= 1000 and tool.lower() == "team of starving students":
+      print(f"Money: {money}")
       print("You won!")
       exit()
 
@@ -71,11 +72,12 @@ def start_game():
       start_game()
   
   def print_stats():
+    os.system("clear")
     print(f"Money: {money}")
     print(f"Current Tool: {tool}")
 
   print_stats()
-  user_choice = input("\nPress 'k' to start cutting lawns\nPress 'l' to open shop\nPress 'q' to quit\n\n> ")
+  user_choice = input("\nPress 'k' then Enter to start cutting lawns\nPress 'l' then Enter to open shop\nPress 'q' then Enter to QUIT GAME\n\n> ")
 
   player_move(user_choice)
 
@@ -83,7 +85,10 @@ def intro():
     print("It's a great day to start a business..\n")
     print("I'm going to start a landscaping business!\n")
     print("WELCOME TO LANDSCAPER TERMINAL GAME\n")
-    start_menu_selection = input("Press space then Enter to START\nPress 'q' then Enter to QUIT\n\n> ")
+
+    print("You are starting a landscaping business. You need to cut lawns and grow your business money bank. If you make enough, you can purchase tools that earn more money!\n")
+
+    start_menu_selection = input("Press space then Enter to START\nPress 'q' then Enter to QUIT GAME\n\n> ")
 
     if (start_menu_selection == " "):
       start_game()
