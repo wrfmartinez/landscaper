@@ -73,7 +73,6 @@ def start_game():
   def print_stats():
     print(f"Money: {money}")
     print(f"Current Tool: {tool}")
-    print(f"Current Day: {day}")
 
   print_stats()
   user_choice = input("\nPress 'k' to start cutting lawns\nPress 'l' to open shop\nPress 'q' to quit\n\n> ")
