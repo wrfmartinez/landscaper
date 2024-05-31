@@ -27,16 +27,38 @@ def main():
     return dict
 
   def player_move(choice):
+    global money
+    global tool
+
     if (choice.lower() == "k" and tool == "teeth"):
-      global money
       money += 1
+    elif (choice.lower() == "k" and tool == "rusty scissors"):
+      money += 5
+    elif (choice.lower() == "k" and tool == "old-timey push lawnmower"):
+      money += 50
+    elif (choice.lower() == "k" and tool == "fancy battery-powered lawnmower"):
+      money += 100 
+    elif (choice.lower() == "k" and tool == "team of starving students"):
+      money += 250
     elif (choice.lower() == "l"):
       shop_item1 = itemDetails("Rusty Scissors")
       shop_item2 = itemDetails("Old-timey Push Lawnmower")
       shop_item3 = itemDetails("Fancy Battery-powered Lawnmower")
       shop_item4 = itemDetails("Team of Starving Students")
 
-      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy?\nRusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n")
+      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy?\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\n> ")
+
+      if buy_tool.lower() == "1" and money == shop_item1['item_price']:
+        tool = "rusty scissors"
+      elif buy_tool.lower() == "2" and money == shop_item2['item_price']:
+        tool = "old-timey push lawnmower"
+      elif buy_tool.lower() == "3" and money == shop_item3['item_price']:
+        tool = "fancy battery-powered lawnmower"
+      elif buy_tool.lower() == "4" and money == shop_item4['item_price']:
+        tool = "team of starving students"
+    elif money == 1000:
+      print("You won!")
+      exit()
     else:
       return exit()
     
