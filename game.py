@@ -1,6 +1,6 @@
 import os
 
-tool = "teeth"
+tool = "Teeth"
 money = 0
 quantity = 0
 
@@ -44,7 +44,7 @@ def start_game():
       shop_item3 = itemDetails("Fancy Battery-powered Lawnmower")
       shop_item4 = itemDetails("Team of Starving Students")
 
-      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy? Press the items number then Enter\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\nPress ANY OTHER KEY to EXIT SHOP\n> ")
+      buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy? Press the items number then Enter\n\n1: Rusty Scissors\nQuantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n\n2: Old-timey Push Lawnmower\nQuantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n\n3: Fancy Battery-powered Lawnmower\nQuantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n\n4: Team of Starving Students\nQuantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\nPress ANY OTHER KEY to EXIT SHOP\n> ")
 
       if tool.lower() != "rusty scissors" and buy_tool == "1" and money >= shop_item1['item_price']:
         money -= shop_item1['item_price']
