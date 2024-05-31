@@ -37,7 +37,7 @@ def start_game():
       money += 50
     elif (choice.lower() == "k" and tool.lower() == "fancy battery-powered lawnmower"):
       money += 100 
-    elif (choice.lower() == "k" and tool == "team of starving students"):
+    elif (choice.lower() == "k" and tool.lower() == "team of starving students"):
       money += 250
     elif (choice.lower() == "l"):
       shop_item1 = itemDetails("Rusty Scissors")
@@ -59,12 +59,15 @@ def start_game():
       elif tool.lower() != "team of starving students" and buy_tool == "4" and money == shop_item4['item_price']:
         money -= shop_item4['item_price']
         tool = "Team of Starving Students"
-    elif money == 1000:
+    elif choice == "q":
+      return exit()
+    else:
+      start_game()
+    
+    if money == 1000 and tool.lower() == "team of starving students":
       print("You won!")
       exit()
-    else:
-      return exit()
-    
+
     while choice.lower() != "q":
       start_game()
   
@@ -88,7 +91,8 @@ def intro():
     elif (start_menu_selection == "q"):
       exit()
     else:
-      print("Invalid option")
-      exit()
+      os.system("clear")
+      print("INVALID OPTION. TRY AGAIN!")
+      intro()
 
 intro()
