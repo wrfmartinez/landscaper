@@ -1,13 +1,12 @@
 import os
 
 tool = "teeth"
-day = 1
 money = 0
 quantity = 0
 
 def start_game():
   os.system("clear")
-
+  
   def itemDetails(item):
     dict = {
       "quantity": 1,
@@ -47,16 +46,16 @@ def start_game():
 
       buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy?\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\n> ")
 
-      if tool.lower() != "rusty scissors" and buy_tool == "1" and money == shop_item1['item_price']:
+      if tool.lower() != "rusty scissors" and buy_tool == "1" and money >= shop_item1['item_price']:
         money -= shop_item1['item_price']
         tool = "Rusty Scissors"
-      elif tool.lower() != "old-timey push lawnmower" and buy_tool == "2" and money == shop_item2['item_price']:
+      elif tool.lower() != "old-timey push lawnmower" and buy_tool == "2" and money >= shop_item2['item_price']:
         money -= shop_item2['item_price']
         tool = "Old-timey Push Lawnmower"
-      elif tool.lower() != "fancy battery-powered lawnmower" and buy_tool == "3" and money == shop_item3['item_price']:
+      elif tool.lower() != "fancy battery-powered lawnmower" and buy_tool == "3" and money >= shop_item3['item_price']:
         money -= shop_item3['item_price']
         tool = "Fancy Battery-powered Lawnmower"
-      elif tool.lower() != "team of starving students" and buy_tool == "4" and money == shop_item4['item_price']:
+      elif tool.lower() != "team of starving students" and buy_tool == "4" and money >= shop_item4['item_price']:
         money -= shop_item4['item_price']
         tool = "Team of Starving Students"
     elif choice == "q":
@@ -74,6 +73,7 @@ def start_game():
   def print_stats():
     print(f"Money: {money}")
     print(f"Current Tool: {tool}")
+    print(f"Current Day: {day}")
 
   print_stats()
   user_choice = input("\nPress 'k' to start cutting lawns\nPress 'l' to open shop\nPress 'q' to quit\n\n> ")
