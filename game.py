@@ -2,7 +2,6 @@ import os
 
 tool = "Teeth"
 money = 0
-quantity = 0
 
 def start_game():
   os.system("clear")
