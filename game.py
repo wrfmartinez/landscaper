@@ -1,13 +1,12 @@
+import os
+
 tool = "teeth"
 day = 1
 money = 0
 quantity = 0
 
-def main():
-  def intro():
-    print("It's a great day to start a business..\n")
-    print("I'm going to start a landscaping business!\n")
-    print("WELCOME TO LANDSCAPER TERMINAL GAME\n")
+def start_game():
+  os.system("clear")
 
   def itemDetails(item):
     dict = {
@@ -30,13 +29,13 @@ def main():
     global money
     global tool
 
-    if (choice.lower() == "k" and tool == "teeth"):
+    if (choice.lower() == "k" and tool.lower() == "teeth"):
       money += 1
-    elif (choice.lower() == "k" and tool == "rusty scissors"):
+    elif (choice.lower() == "k" and tool.lower() == "rusty scissors"):
       money += 5
-    elif (choice.lower() == "k" and tool == "old-timey push lawnmower"):
+    elif (choice.lower() == "k" and tool.lower() == "old-timey push lawnmower"):
       money += 50
-    elif (choice.lower() == "k" and tool == "fancy battery-powered lawnmower"):
+    elif (choice.lower() == "k" and tool.lower() == "fancy battery-powered lawnmower"):
       money += 100 
     elif (choice.lower() == "k" and tool == "team of starving students"):
       money += 250
@@ -48,14 +47,18 @@ def main():
 
       buy_tool = input(f"*** SHOP ***\nWhich item would you like to buy?\n1: Rusty Scissors Quantity:{shop_item1['quantity']} Price:${shop_item1['item_price']}\n2: Old-timey Push Lawnmower Quantity:{shop_item2['quantity']} Price:${shop_item2['item_price']}\n3: Fancy Battery-powered Lawnmower Quantity:{shop_item3['quantity']} Price:${shop_item3['item_price']}\n4: Team of Starving Students Quantity:{shop_item4['quantity']} Price:${shop_item4['item_price']}\n\n> ")
 
-      if buy_tool.lower() == "1" and money == shop_item1['item_price']:
-        tool = "rusty scissors"
-      elif buy_tool.lower() == "2" and money == shop_item2['item_price']:
-        tool = "old-timey push lawnmower"
-      elif buy_tool.lower() == "3" and money == shop_item3['item_price']:
-        tool = "fancy battery-powered lawnmower"
-      elif buy_tool.lower() == "4" and money == shop_item4['item_price']:
-        tool = "team of starving students"
+      if tool.lower() != "rusty scissors" and buy_tool == "1" and money == shop_item1['item_price']:
+        money -= shop_item1['item_price']
+        tool = "Rusty Scissors"
+      elif tool.lower() != "old-timey push lawnmower" and buy_tool == "2" and money == shop_item2['item_price']:
+        money -= shop_item2['item_price']
+        tool = "Old-timey Push Lawnmower"
+      elif tool.lower() != "fancy battery-powered lawnmower" and buy_tool == "3" and money == shop_item3['item_price']:
+        money -= shop_item3['item_price']
+        tool = "Fancy Battery-powered Lawnmower"
+      elif tool.lower() != "team of starving students" and buy_tool == "4" and money == shop_item4['item_price']:
+        money -= shop_item4['item_price']
+        tool = "Team of Starving Students"
     elif money == 1000:
       print("You won!")
       exit()
@@ -63,7 +66,7 @@ def main():
       return exit()
     
     while choice.lower() != "q":
-      main()
+      start_game()
   
   def print_stats():
     print(f"Money: {money}")
@@ -74,4 +77,18 @@ def main():
 
   player_move(user_choice)
 
-main()
+def intro():
+    print("It's a great day to start a business..\n")
+    print("I'm going to start a landscaping business!\n")
+    print("WELCOME TO LANDSCAPER TERMINAL GAME\n")
+    start_menu_selection = input("Press space then Enter to START\nPress 'q' then Enter to QUIT\n\n> ")
+
+    if (start_menu_selection == " "):
+      start_game()
+    elif (start_menu_selection == "q"):
+      exit()
+    else:
+      print("Invalid option")
+      exit()
+
+intro()
